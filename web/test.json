@@ -1,0 +1,236 @@
+{
+    "nodeDataArray": [
+        {
+            "key": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "text": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Symfony\\Component\\Console\\Input\\InputInterface",
+            "text": "Symfony\\Component\\Console\\Input\\InputInterface",
+            "group": "Symfony\\Component"
+        },
+        {
+            "key": "Symfony\\Component\\Console\\Output\\OutputInterface",
+            "text": "Symfony\\Component\\Console\\Output\\OutputInterface",
+            "group": "Symfony\\Component"
+        },
+        {
+            "key": "Symfony\\Component\\Console\\Application",
+            "text": "Symfony\\Component\\Console\\Application",
+            "group": "Symfony\\Component"
+        },
+        {
+            "key": "Symfony\\Component\\Console\\Helper\\HelperSet",
+            "text": "Symfony\\Component\\Console\\Helper\\HelperSet",
+            "group": "Symfony\\Component"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\DependencyAdder",
+            "text": "Etudor\\PhpGraph\\DependencyAdder",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\ReflectionClassFactory",
+            "text": "Etudor\\PhpGraph\\ReflectionClassFactory",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\DependencyExtractor\\DependencyExtractorInterface",
+            "text": "Etudor\\PhpGraph\\DependencyExtractor\\DependencyExtractorInterface",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "ReflectionClass",
+            "text": "ReflectionClass"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\DependencyExtractor\\MethodArgumentsExtractor",
+            "text": "Etudor\\PhpGraph\\DependencyExtractor\\MethodArgumentsExtractor",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\DirectoryMapToClassesMap",
+            "text": "Etudor\\PhpGraph\\DirectoryMapToClassesMap",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\FileReader",
+            "text": "Etudor\\PhpGraph\\FileReader",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\Extractor\\FullClassNameExtractor",
+            "text": "Etudor\\PhpGraph\\Extractor\\FullClassNameExtractor",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\DirectoryScanner",
+            "text": "Etudor\\PhpGraph\\DirectoryScanner",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\Extractor\\ClassExtractor",
+            "text": "Etudor\\PhpGraph\\Extractor\\ClassExtractor",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\Extractor\\NameSpaceExtractor",
+            "text": "Etudor\\PhpGraph\\Extractor\\NameSpaceExtractor",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\Includer\\FileIncluder",
+            "text": "Etudor\\PhpGraph\\Includer\\FileIncluder",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\Includer\\FileIncluderInterface",
+            "text": "Etudor\\PhpGraph\\Includer\\FileIncluderInterface",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\PhpGraph",
+            "text": "Etudor\\PhpGraph\\PhpGraph",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\Renderer\\GoJs",
+            "text": "Etudor\\PhpGraph\\Renderer\\GoJs",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Fhaculty\\Graph\\Graph",
+            "text": "Fhaculty\\Graph\\Graph",
+            "group": "Fhaculty\\Graph"
+        },
+        {
+            "key": "Fhaculty\\Graph\\Vertex",
+            "text": "Fhaculty\\Graph\\Vertex",
+            "group": "Fhaculty\\Graph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\Renderer\\Renderer",
+            "text": "Etudor\\PhpGraph\\Renderer\\Renderer",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph\\UmlGenerator",
+            "text": "Etudor\\PhpGraph\\UmlGenerator",
+            "group": "Etudor\\PhpGraph"
+        },
+        {
+            "key": "Etudor\\PhpGraph",
+            "text": "Etudor\\PhpGraph",
+            "isGroup": "true"
+        },
+        {
+            "key": "Symfony\\Component",
+            "text": "Symfony\\Component",
+            "isGroup": "true"
+        },
+        {
+            "key": "Fhaculty\\Graph",
+            "text": "Fhaculty\\Graph",
+            "isGroup": "true"
+        }
+    ],
+    "linkDataArray": [
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Input\\InputInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Output\\OutputInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Application"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Helper\\HelperSet"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Input\\InputInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Output\\OutputInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Input\\InputInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Output\\OutputInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Input\\InputInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Command\\GenerateGraphCommand",
+            "to": "Symfony\\Component\\Console\\Output\\OutputInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\DependencyAdder",
+            "to": "Etudor\\PhpGraph\\ReflectionClassFactory"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\DependencyExtractor\\DependencyExtractorInterface",
+            "to": "ReflectionClass"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\DependencyExtractor\\MethodArgumentsExtractor",
+            "to": "ReflectionClass"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\DirectoryMapToClassesMap",
+            "to": "Etudor\\PhpGraph\\FileReader"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\DirectoryMapToClassesMap",
+            "to": "Etudor\\PhpGraph\\Extractor\\FullClassNameExtractor"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\PhpGraph",
+            "to": "Etudor\\PhpGraph\\DirectoryScanner"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\PhpGraph",
+            "to": "Etudor\\PhpGraph\\Includer\\FileIncluderInterface"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\PhpGraph",
+            "to": "Etudor\\PhpGraph\\DependencyAdder"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\PhpGraph",
+            "to": "Etudor\\PhpGraph\\DirectoryMapToClassesMap"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Renderer\\GoJs",
+            "to": "Fhaculty\\Graph\\Graph"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Renderer\\GoJs",
+            "to": "Fhaculty\\Graph\\Graph"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Renderer\\GoJs",
+            "to": "Fhaculty\\Graph\\Graph"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Renderer\\GoJs",
+            "to": "Fhaculty\\Graph\\Graph"
+        },
+        {
+            "from": "Etudor\\PhpGraph\\Renderer\\GoJs",
+            "to": "Fhaculty\\Graph\\Vertex"
+        }
+    ]
+}

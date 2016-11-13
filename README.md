@@ -12,4 +12,4 @@ but from where our dependencies on external modules comes from
 so that we can gather them and abstract them.
 - read phpDoc blocks.
 - and much more
-
+- find the common namespace inside the scanned module and remove the name from class boxes. (shorter to read)

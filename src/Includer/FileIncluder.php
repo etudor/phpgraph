@@ -7,7 +7,7 @@ class FileIncluder implements FileIncluderInterface
     /**
      * @inheritdoc
      */
-    public function include($file)
+    public function includeFile($file)
     {
         require $file;
     }

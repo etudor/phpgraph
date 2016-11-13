@@ -14,7 +14,7 @@ class GoJs
     public function render(Graph $graph)
     {
         $this->jsGraph['nodeDataArray'] = $this->getNodes($graph);
-        $this->jsGraph['linkDataArray'] = []; //$this->getLinks($graph);
+        $this->jsGraph['linkDataArray'] = $this->getLinks($graph);
 
         return $this->jsGraph;
     }

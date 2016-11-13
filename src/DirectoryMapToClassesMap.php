@@ -12,7 +12,8 @@ class DirectoryMapToClassesMap
     private $fileReader;
 
     /**
-     * @param FileReader $fileReader
+     * @param FileReader             $fileReader
+     * @param FullClassNameExtractor $fullClassNameExtractor
      */
     public function __construct(FileReader $fileReader = null, FullClassNameExtractor $fullClassNameExtractor = null)
     {

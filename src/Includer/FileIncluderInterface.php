@@ -7,5 +7,5 @@ interface FileIncluderInterface
     /**
      * @param string $file
      */
-    public function include($file);
+    public function includeFile($file);
 }

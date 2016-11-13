@@ -2,7 +2,7 @@
 
 namespace Etudor\PhpGraph;
 
-use Etudor\PhpGraph\DependecyExtractor\MethodArgumentsExtractor;
+use Etudor\PhpGraph\DependencyExtractor\MethodArgumentsExtractor;
 use Etudor\PhpGraph\Includer\FileIncluder;
 use Etudor\PhpGraph\Includer\FileIncluderInterface;
 
@@ -27,6 +27,7 @@ class PhpGraph
      * @param DirectoryScanner|null      $directoryScanner
      * @param FileIncluderInterface|null $includer
      * @param DependencyAdder            $dependencyAdder
+     * @param DirectoryMapToClassesMap   $classesGetter
      */
     public function __construct(
         DirectoryScanner $directoryScanner = null,
@@ -39,6 +40,9 @@ class PhpGraph
         $this->includer = $includer ? $includer : new FileIncluder();
         $this->dependencyAdder = $dependencyAdder ? $dependencyAdder : new DependencyAdder();
         $this->classGetter = $classesGetter ? $classesGetter : new DirectoryMapToClassesMap();
+
+        # register default dependency extractors
+        $this->dependencyAdder->registerDependencyExtractor(new MethodArgumentsExtractor());
     }
 
     public function create($directory, $autoload)
@@ -46,10 +50,7 @@ class PhpGraph
         $filesMap = $this->directoryScanner->scan($directory);
         $fullClasses = $this->classGetter->getClassesFromDirectoryStructure($filesMap);
 
-        $this->includer->include($autoload);
-
-        $this->dependencyAdder->registerDependencyExtractor(new MethodArgumentsExtractor());
-
+        $this->includer->includeFile($autoload);
         $classesWithDependenciesAdded = $this->dependencyAdder->addDependencies($fullClasses);
 
         return $classesWithDependenciesAdded;

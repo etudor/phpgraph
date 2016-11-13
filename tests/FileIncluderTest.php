@@ -10,7 +10,6 @@ class FileIncluderTest extends \PHPUnit_Framework_TestCase
     public function testItIsInstantiable()
     {
         $includer = new FileIncluder();
-
         $this->assertInstanceOf(FileIncluderInterface::class, $includer);
     }
 }

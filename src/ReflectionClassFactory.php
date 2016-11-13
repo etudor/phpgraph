@@ -13,6 +13,13 @@ class ReflectionClassFactory
      */
     public function create($class)
     {
-        return new ReflectionClass($class);
+        // todo try catch or check if it's instance of reflection class after
+        $class = new ReflectionClass($class);
+
+        if ($class instanceof ReflectionClass) {
+            return $class;
+        }
+
+        // todo save as a external dep
     }
 }

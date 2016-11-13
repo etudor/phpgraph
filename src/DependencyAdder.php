@@ -2,7 +2,7 @@
 
 namespace Etudor\PhpGraph;
 
-use Etudor\PhpGraph\DependecyExtractor\DependencyExtractorInterface;
+use Etudor\PhpGraph\DependencyExtractor\DependencyExtractorInterface;
 
 class DependencyAdder
 {
@@ -10,6 +10,11 @@ class DependencyAdder
      * @var ReflectionClassFactory
      */
     private $classFactory;
+
+    /**
+     * @var DependencyExtractorInterface[]
+     */
+    protected $extractors = [];
 
     /**
      * @param ReflectionClassFactory $classFactory
@@ -20,9 +25,12 @@ class DependencyAdder
     }
 
     /**
-     * @var DependencyExtractorInterface[]
+     * @param $customExtractor
      */
-    protected $extractors = [];
+    public function registerDependencyExtractor($customExtractor)
+    {
+        $this->extractors[] = $customExtractor;
+    }
 
     /**
      * Applies registered dependency extractors and adds dependencies for list of classes
@@ -37,6 +45,9 @@ class DependencyAdder
         foreach ($classList as $class) {
             try {
                 $reflectionClass = $this->classFactory->create($class);
+                if (!$reflectionClass) {
+                    continue;
+                }
 
                 $dependencies[$class] = [];
                 foreach ($this->extractors as $extractor) {
@@ -52,13 +63,5 @@ class DependencyAdder
         }
 
         return $dependencies;
-    }
-
-    /**
-     * @param $customExtractor
-     */
-    public function registerDependencyExtractor($customExtractor)
-    {
-        $this->extractors[] = $customExtractor;
     }
 }

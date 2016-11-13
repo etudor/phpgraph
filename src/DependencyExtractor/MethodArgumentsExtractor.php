@@ -1,6 +1,6 @@
 <?php
 
-namespace Etudor\PhpGraph\DependecyExtractor;
+namespace Etudor\PhpGraph\DependencyExtractor;
 
 use ReflectionClass;
 

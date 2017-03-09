@@ -13,7 +13,7 @@ class DependencyAdderTest extends \PHPUnit_Framework_TestCase
     public function is_instantiable()
     {
         $classFactoryMock = $this->getMockBuilder(ReflectionClassFactory::class)->getMock();
-        $adder = new DependencyAdder($classFactoryMock);
+        $adder            = new DependencyAdder($classFactoryMock);
 
         $this->assertInstanceOf(DependencyAdder::class, $adder);
     }
@@ -28,17 +28,21 @@ class DependencyAdderTest extends \PHPUnit_Framework_TestCase
             'testnamespace\class2',
         ];
 
-        $classFactoryMock = $this->getMockBuilder(ReflectionClassFactory::class)->getMock();
+        $classFactoryMock    = $this->getMockBuilder(ReflectionClassFactory::class)->getMock();
+        $reflectionClassMock = $this->getMockBuilder(\ReflectionClass::class)->disableOriginalConstructor()->getMock();
+        $classFactoryMock->method('create')->willReturn($reflectionClassMock);
         $adder = new DependencyAdder($classFactoryMock);
 
-        $customExtractor = $this->getMockBuilder('CustomExtractor')
-            ->setMethods(['getDependencies'])->getMock();
-        $customExtractor->method('getDependencies')->willReturn([]);
+        $customExtractor = $this
+            ->getMockBuilder('CustomExtractor')
+            ->setMethods(['getDependencies'])
+            ->getMock();
+
+        $customExtractor->method('getDependencies')->willReturn(['dependency1Class']);
 
         $adder->registerDependencyExtractor($customExtractor);
 
         $classList = $adder->addDependencies($classList);
-
         $this->assertEquals(2, count($classList));
     }
 
@@ -53,7 +57,7 @@ class DependencyAdderTest extends \PHPUnit_Framework_TestCase
         ];
 
         $classFactoryMock = $this->getMockBuilder(ReflectionClassFactory::class)->getMock();
-        $adder = new DependencyAdder($classFactoryMock);
+        $adder            = new DependencyAdder($classFactoryMock);
 
         $customExtractor = $this->getMockBuilder('CustomExtractor')->setMethods(['getDependencies'])->getMock();
 
@@ -76,7 +80,7 @@ class DependencyAdderTest extends \PHPUnit_Framework_TestCase
         ];
 
         $classFactoryMock = $this->getMockBuilder(ReflectionClassFactory::class)->getMock();
-        $adder = new DependencyAdder($classFactoryMock);
+        $adder            = new DependencyAdder($classFactoryMock);
 
         $customExtractor = $this->getMockBuilder('CustomExtractor')->setMethods(['getDependencies'])->getMock();
         $customExtractor->expects($this->at(0))->method('getDependencies')->willReturn(['11', '12']);

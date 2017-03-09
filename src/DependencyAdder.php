@@ -9,7 +9,7 @@ class DependencyAdder
     /**
      * @var ReflectionClassFactory
      */
-    private $classFactory;
+    private $reflectionClassFactory;
 
     /**
      * @var DependencyExtractorInterface[]
@@ -17,11 +17,11 @@ class DependencyAdder
     protected $extractors = [];
 
     /**
-     * @param ReflectionClassFactory $classFactory
+     * @param ReflectionClassFactory $reflectionClassFactory
      */
-    public function __construct(ReflectionClassFactory $classFactory = null)
+    public function __construct(ReflectionClassFactory $reflectionClassFactory = null)
     {
-        $this->classFactory = $classFactory ? $classFactory : new ReflectionClassFactory();
+        $this->reflectionClassFactory = $reflectionClassFactory ? $reflectionClassFactory : new ReflectionClassFactory();
     }
 
     /**
@@ -44,7 +44,7 @@ class DependencyAdder
         $dependencies = [];
         foreach ($classList as $class) {
             try {
-                $reflectionClass = $this->classFactory->create($class);
+                $reflectionClass = $this->reflectionClassFactory->create($class);
                 if (!$reflectionClass) {
                     continue;
                 }
@@ -56,9 +56,11 @@ class DependencyAdder
                         $extractor->getDependencies($reflectionClass)
                     );
                 }
+
+                // todo filter and remove duplicate dependencies
             } catch (\ReflectionException $exception) {
                 // currently try to skip interfaces
-                // todo do something with interfaces
+                // todo do something with interfaces: skip them
             }
         }
 

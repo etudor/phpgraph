@@ -14,3 +14,4 @@ so that we can gather them and abstract them.
 - and much more
 - find the common namespace inside the scanned module and remove the name from class boxes. (shorter to read)
 - make the graph readonly
+

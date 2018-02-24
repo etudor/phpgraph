@@ -2,7 +2,7 @@
 
 namespace Etudor\PhpGraph\Extractor;
 
-class NameSpaceExtractor
+class NameSpaceExtractor implements ExtractorInterface
 {
     /**
      * @param string $content

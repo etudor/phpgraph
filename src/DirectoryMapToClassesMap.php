@@ -4,6 +4,11 @@ namespace Etudor\PhpGraph;
 
 use Etudor\PhpGraph\Extractor\FullClassNameExtractor;
 
+/**
+ * Extracts FQCN from files array
+ *
+ * @package Etudor\PhpGraph
+ */
 class DirectoryMapToClassesMap
 {
     /**
@@ -15,10 +20,13 @@ class DirectoryMapToClassesMap
      * @param FileReader             $fileReader
      * @param FullClassNameExtractor $fullClassNameExtractor
      */
-    public function __construct(FileReader $fileReader = null, FullClassNameExtractor $fullClassNameExtractor = null)
+    public function __construct(
+        FileReader $fileReader,
+        FullClassNameExtractor $fullClassNameExtractor
+    )
     {
-        $this->fileReader = $fileReader ? $fileReader : new FileReader();
-        $this->fullClassNameExtractor = $fullClassNameExtractor ? $fullClassNameExtractor : new FullClassNameExtractor();
+        $this->fileReader             = $fileReader;
+        $this->fullClassNameExtractor = $fullClassNameExtractor;
     }
 
     /**
@@ -26,13 +34,13 @@ class DirectoryMapToClassesMap
      *
      * @return array
      */
-    public function getClassesFromDirectoryStructure(array $classMap)
+    public function getClassesFromDirectoryStructure(array $filesMap)
     {
         $classes = [];
 
-        foreach ($classMap as $class) {
-            $content = $this->fileReader->read($class);
-            $classes[] = $this->fullClassNameExtractor->extract($content);
+        foreach ($filesMap as $file) {
+            $content   = $this->fileReader->read($file);
+            $classes[$file] = $this->fullClassNameExtractor->extract($content);
         }
 
         return $classes;

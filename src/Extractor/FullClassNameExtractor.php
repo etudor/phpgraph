@@ -2,12 +2,25 @@
 
 namespace Etudor\PhpGraph\Extractor;
 
-class FullClassNameExtractor
+class FullClassNameExtractor implements ExtractorInterface
 {
-    public function __construct()
+    /**
+     * @var NameSpaceExtractor
+     */
+    private $namespaceExtractor;
+
+    /**
+     * @var ClassExtractor
+     */
+    private $classExtractor;
+
+    public function __construct(
+        NameSpaceExtractor $nameSpaceExtractor,
+        ClassExtractor $classExtractor
+    )
     {
-        $this->namespaceExtractor = new NameSpaceExtractor();
-        $this->classExtractor = new ClassExtractor();
+        $this->namespaceExtractor = $nameSpaceExtractor;
+        $this->classExtractor     = $classExtractor;
     }
 
     /**

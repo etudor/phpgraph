@@ -3,6 +3,7 @@
 namespace Etudor\PhpGraph\Tests;
 
 use Etudor\PhpGraph\DependencyAdder;
+use Etudor\PhpGraph\Extractor\ExtractorInterface;
 use Etudor\PhpGraph\ReflectionClassFactory;
 
 class DependencyAdderTest extends \PHPUnit_Framework_TestCase
@@ -21,11 +22,11 @@ class DependencyAdderTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function given_a_list_of_namespaces_it_calls_add_dependencies()
+    public function given_a_list_of_namespaces_it_tries_to__add_dependencies()
     {
         $classList = [
             'test\class1',
-            'testnamespace\class2',
+            'testNamespace\class2',
         ];
 
         $classFactoryMock    = $this->getMockBuilder(ReflectionClassFactory::class)->getMock();
@@ -35,10 +36,10 @@ class DependencyAdderTest extends \PHPUnit_Framework_TestCase
 
         $customExtractor = $this
             ->getMockBuilder('CustomExtractor')
-            ->setMethods(['getDependencies'])
+            ->setMethods(['addDependencies'])
             ->getMock();
 
-        $customExtractor->method('getDependencies')->willReturn(['dependency1Class']);
+        $customExtractor->method('addDependencies')->willReturn(['dependency1Class']);
 
         $adder->registerDependencyExtractor($customExtractor);
 
@@ -61,8 +62,8 @@ class DependencyAdderTest extends \PHPUnit_Framework_TestCase
 
         $customExtractor = $this->getMockBuilder('CustomExtractor')->setMethods(['getDependencies'])->getMock();
 
-        $customExtractor->expects($this->at(0))->method('getDependencies')->willReturn([]);
-        $customExtractor->expects($this->at(1))->method('getDependencies')->willReturn([]);
+        $customExtractor->expects($this->at(0))->method('addDependencies')->willReturn([]);
+        $customExtractor->expects($this->at(1))->method('addDependencies')->willReturn([]);
 
         $adder->registerDependencyExtractor($customExtractor);
 
@@ -82,13 +83,14 @@ class DependencyAdderTest extends \PHPUnit_Framework_TestCase
         $classFactoryMock = $this->getMockBuilder(ReflectionClassFactory::class)->getMock();
         $adder            = new DependencyAdder($classFactoryMock);
 
-        $customExtractor = $this->getMockBuilder('CustomExtractor')->setMethods(['getDependencies'])->getMock();
-        $customExtractor->expects($this->at(0))->method('getDependencies')->willReturn(['11', '12']);
-        $customExtractor->expects($this->at(1))->method('getDependencies')->willReturn(['21', '22']);
+        $customExtractor = $this->getMockBuilder(ExtractorInterface::class)
+            ->setMethods(['addDependencies'])->getMock();
+        $customExtractor->expects($this->at(0))->method('addDependencies')->willReturn(['11', '12']);
+        $customExtractor->expects($this->at(1))->method('addDependencies')->willReturn(['21', '22']);
 
-        $customExtractor2 = $this->getMockBuilder('CustomExtractor2')->setMethods(['getDependencies'])->getMock();
-        $customExtractor2->expects($this->at(0))->method('getDependencies')->willReturn(['aa', 'ab']);
-        $customExtractor2->expects($this->at(1))->method('getDependencies')->willReturn(['ba', 'bb']);
+        $customExtractor2 = $this->getMockBuilder('CustomExtractor2')->setMethods(['addDependencies'])->getMock();
+        $customExtractor2->expects($this->at(0))->method('addDependencies')->willReturn(['aa', 'ab']);
+        $customExtractor2->expects($this->at(1))->method('addDependencies')->willReturn(['ba', 'bb']);
 
         $adder->registerDependencyExtractor($customExtractor);
         $adder->registerDependencyExtractor($customExtractor2);

@@ -3,6 +3,7 @@
 namespace Etudor\PhpGraph;
 
 use Etudor\PhpGraph\DependencyExtractor\DependencyExtractorInterface;
+use function var_dump;
 
 class DependencyAdder
 {
@@ -19,9 +20,9 @@ class DependencyAdder
     /**
      * @param ReflectionClassFactory $reflectionClassFactory
      */
-    public function __construct(ReflectionClassFactory $reflectionClassFactory = null)
+    public function __construct(ReflectionClassFactory $reflectionClassFactory)
     {
-        $this->reflectionClassFactory = $reflectionClassFactory ? $reflectionClassFactory : new ReflectionClassFactory();
+        $this->reflectionClassFactory = $reflectionClassFactory;
     }
 
     /**

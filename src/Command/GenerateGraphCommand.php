@@ -2,10 +2,8 @@
 
 namespace Etudor\PhpGraph\Command;
 
-use Etudor\PhpGraph\DependencyExtractor\MethodArgumentsExtractor;
 use Etudor\PhpGraph\PhpGraph;
 use Etudor\PhpGraph\UmlGenerator;
-use ReflectionClass;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -39,6 +37,9 @@ class GenerateGraphCommand extends Command
             $input->getArgument('dir'),
             $input->getArgument('autoload')
         );
+
+        var_dump($map);
+        die;
 
         $uml = new UmlGenerator();
         $graph = $uml->buildGraph($map);

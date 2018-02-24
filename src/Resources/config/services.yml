@@ -1,0 +1,38 @@
+parameters:
+    mailer.transport: sendmail
+
+services:
+    directory_scanner:
+        class:     Etudor\PhpGraph\DirectoryScanner
+
+    file_includer:
+        class:     Etudor\PhpGraph\Includer\FileIncluder
+
+    dependency_adder:
+        class: Etudor\PhpGraph\DependencyAdder
+        arguments:
+            - '@reflection_class_factory'
+
+    reflection_class_factory:
+        class: Etudor\PhpGraph\ReflectionClassFactory
+
+    extractor.class:
+        class: Etudor\PhpGraph\Extractor\ClassExtractor
+
+    extractor.namespace:
+        class: Etudor\PhpGraph\Extractor\NameSpaceExtractor
+
+    extractor.fqcn:
+        class: Etudor\PhpGraph\Extractor\FullClassNameExtractor
+        arguments:
+            - '@extractor.namespace'
+            - '@extractor.class'
+
+    directory_mapper:
+        class: Etudor\PhpGraph\DirectoryMapToClassesMap
+        arguments:
+            - '@file_reader'
+            - '@extractor.fqcn'
+
+    file_reader:
+        class: Etudor\PhpGraph\FileReader

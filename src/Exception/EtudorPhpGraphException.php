@@ -1,6 +1,6 @@
 <?php
 
-namespace Etudor\PhpGraph;
+namespace Etudor\PhpGraph\Exception;
 
 use Exception;
 

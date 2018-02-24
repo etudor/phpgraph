@@ -69,7 +69,7 @@ class PhpGraphTest extends \PHPUnit_Framework_TestCase
      */
     public function given_an_autoload_file_it_includes_the_file($dir, $autoload)
     {
-        $this->includerMock->expects($this->once())->method('include');
+        $this->includerMock->expects($this->once())->method('includeFile');
 
         $classMapCreator = $this->createPhpGraph();
         $classMap = $classMapCreator->create($dir, $autoload);

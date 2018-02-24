@@ -9,7 +9,7 @@ class NamespaceExtractorTest extends \PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function IsInstantiable()
+    public function isInstantiable()
     {
         $extractor = new NameSpaceExtractor();
         $this->assertInstanceOf(NameSpaceExtractor::class, $extractor);

@@ -8,8 +8,17 @@ namespace Etudor\PhpGraph;
  */
 class DirectoryScanner
 {
+    const PHP_EXTENSION = '.php';
+
+    /**
+     * @var string[]
+     */
     protected $filesMap = [];
-    protected $baseDir;
+
+    /**
+     * @var string
+     */
+    private $baseDir;
 
     /**
      * @param string $dir
@@ -23,13 +32,18 @@ class DirectoryScanner
             $this->baseDir = $dir;
         }
 
-        $cdir = scandir($dir);
-        foreach ($cdir as $key => $value) {
-            if (!in_array($value, [".", ".."])) {
-                if (is_dir($dir . DIRECTORY_SEPARATOR . $value)) {
-                    $this->scan($dir . DIRECTORY_SEPARATOR . $value, true);
+        $dirMap = scandir($dir);
+        foreach ($dirMap as $file) {
+            if (!in_array($file, [".", ".."])) {
+                if (is_dir($dir . DIRECTORY_SEPARATOR . $file)) {
+                    $this->scan($dir . DIRECTORY_SEPARATOR . $file, true);
                 } else {
-                    $this->filesMap[] = $dir . DIRECTORY_SEPARATOR . $value;
+                    // save only php files todo add multiple extensions
+                    if (substr($file, -4) !== self::PHP_EXTENSION) {
+                        continue;
+                    }
+
+                    $this->filesMap[] = $dir . DIRECTORY_SEPARATOR . $file;
                 }
             }
         }

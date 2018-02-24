@@ -1,6 +1,6 @@
 <?php
 
-namespace Etudor\PhpGraph;
+namespace Etudor\PhpGraph\Exception;
 
 class UnableToCreateReflectionException extends EtudorPhpGraphException
 {
